@@ -18,15 +18,24 @@ while [ $# -gt 0 ]; do
 					shift 1
 					continue
 					;;
-				-a)
-					echo 'hello a'
-					;;
-				-b)
-					echo 'hello b'
-					;;
 				*)
-					echo "invalid opiton: $1"
-					exit 1
+					for shortopt in $(echo $1 | grep -o .); do
+						case $shortopt in
+							-)
+								continue
+								;;
+							a)
+								echo 'hello a'
+								;;
+							b)
+								echo 'hello b'
+								;;
+							*)
+								echo "invalid option: -$shortopt"
+								exit 1
+								;;
+						esac
+					done
 					;;
 			esac
 			shift 1
