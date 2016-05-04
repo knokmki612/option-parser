@@ -11,6 +11,7 @@ while [ $# -gt 0 ]; do
 			--*)
 				echo "invalid long option: $1"
 				exit 1
+				;;
 		esac
 		shift 1
 		continue
